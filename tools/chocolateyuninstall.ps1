@@ -1,4 +1,5 @@
 ﻿$ErrorActionPreference = 'Stop'; # stop on all errors
+# TODO: include in the uninstall script, the removal of the shortcuts that are created as part of the installation?
 $installLocation = "$ENV:LOCALAPPDATA\Programs\BrutalDoom\*"
 $iconPath = "$ENV:UserProfile\Desktop\BrutalDoom.lnk"
 $packageArgs = @{

@@ -4,16 +4,19 @@ $zandronumLocation = "$ENV:LocalAppData\Programs\Zandronum"
 $freedoomLocation = "$ENV:LocalAppData\Programs\FreeDoom"
 $installLocation = "$ENV:LocalAppData\Programs\BrutalDoom"
 $startMenuLocation = "$ENV:AppData\Microsoft\Windows\Start Menu\Programs\BrutalDoom"
-New-Item -ItemType Directory -Force -Path $installLocation
+
+$srcURL = 'https://www.moddb.com/downloads/start/95667'
+$tokenURL = '(https://www.moddb.com/downloads/mirror/95667/\w+/\w+)'
+$content = (Invoke-WebRequest $srcURL -UseBasicParsing).Content
+$url = (select-string -Input $content -Pattern $tokenURL).Matches[0]
 
 ## Brutal Doom section
 $BDModName = 'brutalv21'
 $BDModPack = "$BDModName.pk3"
 $brutalDoomArgs = @{
   packageName   = 'BrutalDoomMod'
-  file           = "$toolsDir\assets\$BDModName.rar"
+  url           = $url
   unzipLocation = $installLocation
-  # specificFolder = $BDModPack
   softwareName  = 'brutal*'
   checksum      = 'A42F7A1F4FBEC5B19591ECE7F9811034'
   checksumType  = 'md5'
