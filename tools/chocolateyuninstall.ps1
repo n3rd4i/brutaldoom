@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop'; # stop on all errors
-# TODO: include in the uninstall script, the removal of the shortcuts that are created as part of the installation?
-$installLocation = "$ENV:LOCALAPPDATA\Programs\BrutalDoom\*"
-$iconPath = "$ENV:UserProfile\Desktop\BrutalDoom.lnk"
+$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+. "$toolsDir\commonEnv.ps1"
+
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   softwareName  = 'brutaldoom*'  #part or all of the Display Name as you see it in Programs and Features. It should be enough to be unique
@@ -26,5 +26,6 @@ if ($key.Count -eq 1) {
   Write-Warning "Please alert package maintainer the following keys were matched:"
   $key | % {Write-Warning "- $($_.DisplayName)"}
 }
+Remove-Item $lnkDesktop -force
+Remove-Item $startMenuDir -recurse -force
 Remove-Item $installLocation -exclude *.ini, *.zds -recurse -force
-Remove-Item $iconPath -force
