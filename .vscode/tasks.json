@@ -3,24 +3,52 @@
 	// for the documentation about the tasks.json format
 	"version": "2.0.0",
 	"problemMatcher":[],
+	"options": {"shell": {"executable": "cmd.exe", "args": ["/c"]}},
 	"tasks": [
+		{
+			"label": "pack",
+			"type": "shell",
+			"command": "${command:chocolatey.pack}",
+			"group": { "kind": "build", "isDefault": true }
+		},
 		{
 			"label": "admin",
 			"type": "shell",
-			"command": "powershell -c start -verb runas -argumentlist '/k pushd %cd% ^&^& powershell' cmd"	
+			"command": "start cmd '/k pushd ${workspaceFolder}' -verb runas",
+			"options": {"shell": {"executable": "powershell.exe","args": ["-c"]}},
+			"presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "showReuseMessage": true, "clear": false },
+			"group": "test"
+		},
+		{
+			"label": "upgrade",
+			"type": "shell",
+			"command": "start cmd '/k pushd ${workspaceFolder} && choco upgrade ${workspaceFolderBasename} -fdv -s .;https://chocolatey.org/api/v2' -verb runas",
+			"options": {"shell": {"executable": "powershell.exe","args": ["-c"]}},
+			"presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "showReuseMessage": true, "clear": false },
+			"group": "test"
 		},
 		{
 			"label": "install",
 			"type": "shell",
-			"command": "powershell -c start -verb runas -argumentlist '/k pushd %cd% ^&^& powershell choco install $(split-path -leaf $pwd) -f -s .' cmd"	,
-			"presentation": {
-				"echo": true,
-				"reveal": "silent",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": false
-			}
+			"command": "start cmd '/k pushd ${workspaceFolder} && choco install ${workspaceFolderBasename} -dv -s .;https://chocolatey.org/api/v2' -verb runas",
+			"options": {"shell": {"executable": "powershell.exe","args": ["-c"]}},
+			"presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "showReuseMessage": true, "clear": false },
+			"group": "test"
+		},
+		{
+			"label": "install (force)",
+			"type": "shell",
+			"command": "start cmd '/k pushd ${workspaceFolder} && choco install ${workspaceFolderBasename} -fdv -s .;https://chocolatey.org/api/v2' -verb runas",
+			"options": {"shell": {"executable": "powershell.exe","args": ["-c"]}},
+			"presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "showReuseMessage": true, "clear": false },
+			"group": "test"
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "del /s /q *.nupkg",
+			"presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "showReuseMessage": true, "clear": false },
+			"problemMatcher": []
 		}
 	]
 }

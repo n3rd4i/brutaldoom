@@ -3,13 +3,13 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>brutaldoom</id>
-    <version>21.0.0</version>
+    <version>21.0.0.20200628</version>
     <packageSourceUrl>https://github.com/n3rd4i/brutaldoom.git</packageSourceUrl>
     <owners>n3rd4i</owners>
     <!-- ============================== -->
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
-    <title>brutaldoom (Install)</title>
+    <title>BrutalDoom (Doom2 Mod)</title>
     <authors>[Sergeant_Mark_IV](https://www.moddb.com/members/sergeant-mark-iv)</authors>
     <projectUrl>https://www.moddb.com/mods/brutal-doom</projectUrl>
     <iconUrl>https://media.moddb.com/images/members/5/4296/4295223/brutal_doom_ico.png</iconUrl>
@@ -21,9 +21,9 @@
     <mailingListUrl>https://www.moddb.com/mods/brutal-doom/forum</mailingListUrl>
     <!--<bugTrackerUrl></bugTrackerUrl>-->
     <tags>brutaldoom doom freedoom zandronum</tags>
-    <summary>Compiled version of Brutal Doom for Windows</summary>
+    <summary>doom2 mod</summary>
     <description> === BrutalDoom Mod (https://www.moddb.com/mods/brutal-doom) for Windows ===
-====    ====    ====    ====    ====    ====    ====
+
 In development since 2010, the 18th Cacoward winner and Moddb 2012 MOTY Editors Choice of Creativity Award Brütal Doom takes Doom into a whole new level. It makes the game much more violent than before. There's much more blood, plus it adds unique gibs, death animations, dismemberments, headshots, executions, fire and explosion particles, flares, and much more.
 
 The whole world becomes more real and interactive.You can kick severed limbs and heads (and sometimes, use it to activate some traps in the map earlier, or even kick them against enemies to do some damage), you can shoot enemies' heads to deal more damage (and cause more gruesome deaths) you can destroy most things in the the scenario (trees, lamps, hanging bodies, etc), you can paint the floor, the walls, and even the ceiling with blood, you can push the explosive barrels to make traps, or grab them and use like an explosive weapon, you can silently take down enemies from behind and perform stealth kills, the chainsaw actually cuts the enemies in two. When you find the berserk pack and get super strength, you can perform cinematic executions and RIP AND TEAR your foes with your bare hands. Some enemies will scream in anguish and try to crawl away when near death, and they can be used as human shields, and much, much more.
@@ -33,13 +33,12 @@ Everything in Brutal Doom is extremely intense. Everything sounds louder, looks 
 Brütal Doom will make the good an old Doom have a new and fresh look. It will give you a reason to play all the Ultimate Doom, Doom 2, and Final Doom levels again. This mod also works with almost every megawad and map pack around. Take a breath, and prepare to RIP AND TEAR HUGE GUTS!!!!!
 
 
-
 Also Check the Official Facebook page: [Facebook.com](https://www.facebook.com/BrutalDoom)
 And my Youtube Channel: [Youtube.com](https://www.youtube.com/user/SGtMarkIV?feature=watch)
 
 Before making any questions related to the mod, or problems to make it work, please read the FAQ.
 [Moddb.com](https://www.moddb.com/mods/brutal-doom/features/brutal-doom-faq-and-troubleshooting)
-====    ====    ====    ====    ====    ====    ====
+
     </description>
     <releaseNotes>
     May 17 2019 v21 GOLD Release
@@ -56,7 +55,8 @@ Before making any questions related to the mod, or problems to make it work, ple
 
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
     <dependencies>
-      <dependency id="freedoom" version="0.11.3" />
+      <dependency id="moddb.extension" version="0.1.3" />
+      <dependency id="freedoom" version="0.12.1" />
     </dependencies>
   </metadata>
   <files>
